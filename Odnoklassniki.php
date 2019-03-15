@@ -54,7 +54,17 @@ class Odnoklassniki extends OAuth2
 		return $this->api('api/users/getCurrentUser', 'GET', $params);
 	}
 
-	/**
+    /**
+     * {@inheritdoc}
+     */
+    protected function defaultNormalizeUserAttributeMap()
+    {
+        return [
+            'id' => 'uid'
+        ];
+    }
+
+    /**
 	 * @inheritdoc
 	 */
 	protected function apiInternal($accessToken, $url, $method, array $params, array $headers)
